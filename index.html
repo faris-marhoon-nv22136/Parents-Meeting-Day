@@ -5,156 +5,161 @@
 
   <style>
     /* Common styles for all screen sizes */
-body {
-    background-image: url("OIP.jpg");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 25rem;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .form-container {
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3f9642;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .queue-container {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .queue-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .queue-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin: 5px;
-    background-color: #f2f2f2;
-    border-radius: 4px;
-  }
-  
-  .queue-list-item button {
-    background-color: #e74c3c;
-    margin-left: 10px;
-  }
-  
-  /* Additional styles for smaller screens */
-  @media (max-width: 1000px) {
     body {
-      font-size: 14px;
+      background-image: url("OIP.jpg");
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 25rem;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-  
-    .form-container {
-      max-width: 600px;
-    }
-  
-    input[type="text"] {
-      font-size: 18px;
-    }
-  
-    button {
-      font-size: 18px;
-    }
-  }
-  
-  /* Additional styles for even smaller screens */
-  @media (max-width: 600px) {
-    body {
-      padding: 10px;
-    }
-  
+    
     h1 {
-      font-size: 20px;
+      text-align: center;
     }
-  }
-  
-/* New CSS for the waiting count and finished count boxes */
-.count-box {
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
-  
-  .waiting-count {
-    background-color: #f2f2f2;
-    align-self: flex-start;
-    margin-right: 10px; /* Add margin to create space between the boxes */
-  }
-  
-  .finished-count {
-    background-color: #f2f2f2;
-    align-self: flex-start;
-  }
-  
+    
+    .form-container {
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3f9642;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .queue-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .queue-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .queue-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 5px;
+      background-color: #f2f2f2;
+      border-radius: 4px;
+    }
+    
+    .queue-list-item button {
+      background-color: #e74c3c;
+      margin-left: 10px;
+    }
+    
+    /* Additional styles for smaller screens */
+    @media (max-width: 1000px) {
+      body {
+        font-size: 14px;
+      }
+    
+      .form-container {
+        max-width: 600px;
+      }
+    
+      input[type="text"] {
+        font-size: 18px;
+      }
+    
+      button {
+        font-size: 18px;
+      }
+    }
+    
+    /* Additional styles for even smaller screens */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    
+      h1 {
+        font-size: 20px;
+      }
+    }
+    
+    /* New CSS for the waiting count and finished count boxes */
+    .count-box {
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    
+    .waiting-count {
+      background-color: #f2f2f2;
+      align-self: flex-start;
+      margin-right: 10px; /* Add margin to create space between the boxes */
+    }
+    
+    .finished-count {
+      background-color: #f2f2f2;
+      align-self: flex-start;
+    }
+    
   </style>
 </head>
 <body>
-    <!-- Waiting count box -->
-    <div class="count-box waiting-count" id="waitingCountBox">
-      Waiting Students: <span id="waitingCount">0</span>
-    </div>
-
-  <div class="content">
-    <h1>Student Waiting List</h1>
-  <div class="form-container">
-    <div class="form-group">
-      <label for="studentId">Student NV:</label>
-      <input type="text" id="studentId" placeholder="Enter Student NV">
-    </div>
-    <div class="form-group">
-      <label for="studentName">Student Name:</label>
-      <input type="text" id="studentName" placeholder="Enter Student Name">
-    </div>
-    <div class="form-group">
-      <button onclick="checkInStudent()">Check-In</button>
-    </div>
+  <!-- Waiting count box -->
+  <div class="count-box waiting-count" id="waitingCountBox">
+    Waiting Students: <span id="waitingCount">0</span>
   </div>
 
-  <div class="queue-container">
-    <h2>Waiting :</h2>
-    <ul class="queue-list" id="queueList"></ul>
-  </div> 
+  <!-- Finished count box -->
+  <div class="count-box finished-count" id="finishedCountBox">
+    Finished Students: <span id="finishedCountValue">0</span>
+  </div>
+
+  <div class="content">
+    <h1>Student Waiting </h1>
+    <div class="form-container">
+      <div class="form-group">
+        <label for="studentId">Student NV:</label>
+        <input type="text" id="studentId" placeholder="Enter Student NV">
+      </div>
+      <div class="form-group">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Enter Student Name">
+      </div>
+      <div class="form-group">
+        <button onclick="checkInStudent()">Check-In</button>
+      </div>
+    </div>
+
+    <div class="queue-container">
+      <h2>Waiting :</h2>
+      <ul class="queue-list" id="queueList"></ul>
+    </div> 
   </div>
 
   <script>
@@ -193,9 +198,15 @@ body {
 
       // Update the queue list on the page
       updateQueueList();
-      updateFinishedCount(); // Update the finished student counton the page
+      updateFinishedCount(); // Update the finished student count on the page
       // Update the waiting count box
       updateWaitingCount();
+
+      // Check if the queue list has detected one student because it finished detecting one from the waiting count
+      if (queue.length === 0 && finishedCount > 0) {
+        // Add your code here for the specific action you want to perform
+        console.log("One student detected because it finished detecting one from the waiting count.");
+      }
     }
 
     function skipStudent(index) {
