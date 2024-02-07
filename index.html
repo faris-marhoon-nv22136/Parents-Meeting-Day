@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Waiting List</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Waiting count box -->
+    <div class="count-box waiting-count" id="waitingCountBox">
+      Waiting Students: <span id="waitingCount">0</span>
+    </div>
+  
+    <!-- Finished count box -->
+    <div class="count-box finished-count" id="finishedCountBox">
+      Number of Students Finished: <span id="finishedCountValue">0</span>
+    </div>
+
+  <div class="content">
+    <h1>Student Check-In System</h1>
+  <div class="form-container">
+    <div class="form-group">
+      <label for="studentId">Student NV:</label>
+      <input type="text" id="studentId" placeholder="Enter Student NV">
+    </div>
+    <div class="form-group">
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" placeholder="Enter Student Name">
+    </div>
+    <div class="form-group">
+      <button onclick="checkInStudent()">Check-In</button>
+    </div>
+  </div>
+
+  <div class="queue-container">
+    <h2>Waiting :</h2>
+    <ul class="queue-list" id="queueList"></ul>
+  </div> 
+  </div>
+
+  <script>
+    var queue = [];
+    var finishedCount = 0; // Counter variable for finished students
+
+    function checkInStudent() {
+      var studentId = document.getElementById('studentId').value;
+      var studentName = document.getElementById('studentName').value;
+
+      // Perform any additional validation or processing here
+
+      // Create a student object with ID and name
+      var student = {
+        id: studentId,
+        name: studentName
+      };
+
+      // Add the student to the queue
+      queue.push(student);
+
+      // Clear the input fields after check-in
+      document.getElementById('studentId').value = '';
+      document.getElementById('studentName').value = '';
+
+      // Update the queue list on the page
+      updateQueueList();
+      // Update the waiting count box
+      updateWaitingCount();
+    }
+
+    function removeStudent(index) {
+      // Remove the student from the queue array
+      queue.splice(index, 1);
+      finishedCount++; // Increment the finished student count
+
+      // Update the queue list on the page
+      updateQueueList();
+      updateFinishedCount(); // Update the finished student counton the page
+      // Update the waiting count box
+      updateWaitingCount();
+    }
+
+    function skipStudent(index) {
+      // ... JavaScript code omitted for brevity ...
+    }
+
+    function updateQueueList() {
+      var queueListElement = document.getElementById('queueList');
+      queueListElement.innerHTML = '';
+
+      // Iterate over the queue and create list items
+      for (var i = 0; i < queue.length; i++) {
+        var student = queue[i];
+        var listItem = document.createElement('li');
+        listItem.classList.add('queue-list-item');
+        listItem.textContent = student.id + ' - ' + student.name;
+
+        var removeButton = document.createElement('button');
+        removeButton.textContent = 'Finished';
+        removeButton.onclick = removeStudent.bind(null, i);
+
+        var skipButton = document.createElement('button');
+        skipButton.textContent = 'Skip';
+        skipButton.onclick = skipStudent.bind(null, i);
+
+        listItem.appendChild(removeButton);
+        queueListElement.appendChild(listItem);
+      }
+    }
+
+    function updateFinishedCount() {
+      var finishedCountElement = document.getElementById('finishedCountValue');
+      finishedCountElement.textContent = finishedCount;
+    }
+
+    // Function to update the waiting count box
+    function updateWaitingCount() {
+      var waitingCountElement = document.getElementById('waitingCount');
+      waitingCountElement.textContent = queue.length;
+    }
+
+    // Call the function to initially update the waiting count
+    updateWaitingCount();
+  </script>
+</body>
+</html>
